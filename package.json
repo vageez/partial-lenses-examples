@@ -1,0 +1,26 @@
+{
+  "name": "pl",
+  "version": "1.0.0",
+  "description": "working on partial lenses ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vageez",
+  "license": "ISC",
+  "dependencies": {
+    "partial.lenses": "^14.17.0"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vageez/partial-lenses-examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vageez/partial-lenses-examples/issues"
+  },
+  "homepage": "https://github.com/vageez/partial-lenses-examples#readme"
+}
