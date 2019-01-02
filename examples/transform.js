@@ -6,7 +6,7 @@ import { data } from '../fixture'
  *  L.assignOp : Assign or Overwrite a key: value to each optic
  *  L.assignOp : Merges the given object into the object in focus
  */
-L.transform([L.elems, L.assignOp({y: 1})], [{x: 3}, {x: 4, y: 5}]) //?
+L.transform([L.elems, L.assignOp({ y: 1 })], [{ x: 3 }, { x: 4, y: 5 }]) //?
 
 /**
  *  Transform existing optic to negative, can be achieved with L.Modify
@@ -22,7 +22,7 @@ L.transform(
  *  Same as above
  */
 L.modify(
-    L.elems, 
-    x => -x, 
+    L.elems,
+    x => -x,
     [1, 2, 3]
 ) //?

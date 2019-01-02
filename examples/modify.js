@@ -4,7 +4,7 @@ import { data } from '../fixture'
 /**
  * 
  *  *** Modify an existing optic focus ***
- *  *** Modify like is like MAP over elements/values ***
+ *  *** Modify MAPs over elements/values ***
  * 
  */
 
@@ -45,3 +45,30 @@ L.modify(
     x => x-1,
     {elems: [{x: 1, y: 2}, {x: 3, y: 4}]}
   ) //?
+
+/**
+ *  L.modify *** As a map ***
+ */
+const mapper = L.modify(
+    [L.elems, 'value'], 
+    x => x.toUpperCase(),
+    [{id: 3, value: 'a'},
+    {id: 2, value: 'b'},
+    {id: 1, value: 'c'},
+    {id: 4, value: 'd'},
+    {id: 5, value: 'e'}]   
+) //?
+
+/**
+ *  L.modify *** As a reduce ***
+ */
+const reducer = L.modify(
+    L.elems, 
+    x => x.value.toUpperCase(),
+    [{id: 3, value: 'a'},
+    {id: 2, value: 'b'},
+    {id: 1, value: 'c'},
+    {id: 4, value: 'd'},
+    {id: 5, value: 'e'}]
+) //? 
+

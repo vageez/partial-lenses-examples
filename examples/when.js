@@ -30,14 +30,24 @@ const malesOver40ByName = L.collectAs(
 ) 
 
 /**
+ *  Example
+ */
+malesOver40(data) //?
+malesOver40ByName(data) //?
+
+/**
  *  Vanilla
  */
 data.filter(x => x.age > 40)
     .filter(x => x.gender==='male')
     .map(x => ({name : x.name})) //?
 
+
+
 /**
- *    Example
+ *  ***L.when vs. L.find***
+ *  L.when user by id x => x.id === 2
  */
-malesOver40(data) //?
-malesOver40ByName(data) //?
+L.get([L.elems, L.when(x => x.id === 2)], data) //?
+
+L.get(L.find(x => x.id === 2), data) //?

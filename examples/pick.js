@@ -8,12 +8,12 @@ import { data } from '../fixture'
  * 
  */
 
- /**
-  *     We create a data structure that segregates private and publis data
-  */
-const picker = L.pick({ 
-    private : { email: 'email', tel: 'phone' }, 
-    public: { name : 'name', cell : 'cell', address : { number : ['address', 'number'], street: ['address', 'street'] }} 
+/**
+ *     We create a data structure that segregates private and public data
+ */
+const picker = L.pick({
+    private: { email: 'email', tel: 'phone' },
+    public: { name: 'name', cell: 'cell', address: { number: ['address', 'number'], street: ['address', 'street'] } }
 })
 
 /**
@@ -28,7 +28,7 @@ L.get(
  *  We apply to all instances of data
  */
 L.modify(
-L.elems, 
-L.get(picker),
-data
+    L.elems,
+    L.get(picker),
+    data
 ) //?

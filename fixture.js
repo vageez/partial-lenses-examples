@@ -1,5 +1,6 @@
 export const data = [
     {
+        id: 0,
         name : 'Sam',
         age : 43,
         language: 'english',
@@ -29,6 +30,7 @@ export const data = [
 
     },
     {
+        id: 1,
         name : 'Paul',
         age : 31,
         language: 'french',
@@ -58,6 +60,7 @@ export const data = [
 
     },
     {
+        id: 2,
         name : 'Jane',
         age : 28,
         language: 'english',
