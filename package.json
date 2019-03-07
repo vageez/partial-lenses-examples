@@ -9,6 +9,7 @@
   "author": "vageez",
   "license": "ISC",
   "dependencies": {
+    "daggy": "^1.3.0",
     "partial.lenses": "^14.17.0"
   },
   "directories": {
