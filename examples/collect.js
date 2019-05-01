@@ -16,3 +16,4 @@ L.collect([L.elems, 'address', 'street'], data) //?
  *  from a given function from the elements focused on by the given traversal.
  */
 L.collectAs( x => x.toUpperCase(), [L.elems, 'address', 'street'], data) //?
+
