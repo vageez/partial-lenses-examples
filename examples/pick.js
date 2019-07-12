@@ -1,6 +1,8 @@
-import L from 'partial.lenses'
+import * as L from 'partial.lenses'
 import { data } from '../fixture'
 
+
+data //?
 /**
  * 
  *  Pick apart data and put it together in a more meaningful structure
