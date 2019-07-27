@@ -22,9 +22,6 @@ const isValidBreed = breed => DogBreed.is(breed) ? Ok(breed) : Err()
     Ok(dog)
     .chain(dog => dog.breed) //? Chihuahua
 
-
-    import { Ok, Err } from 'pratica
-
 const DogBreed = daggy.taggedSum('DogBreed', {
     Doberman : [],
     Chihuahua : [],
@@ -47,6 +44,6 @@ Ok(dog)
     .map(breed => breed === 'BullDog' ? DogBreed.BullDog : breed)
     .chain(isValidBreed)
     .cata({
-        Ok: breed => console.log(breed.toString()), //?
-        Err: () => DogBreed.Unknown //?
+        Ok: breed => console.log(breed.toString()), //? DogBreed.Chihuahua
+        Err: () => DogBreed.Unknown
     })
