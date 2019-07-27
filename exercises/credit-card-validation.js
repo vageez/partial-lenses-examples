@@ -4,7 +4,9 @@
  *  4929248144006777
  *  https://www.dcode.fr/luhn-algorithm
  */
-const compose = f => g => h => x => y => z => f(g(h(x(y(z)))))
+
+ // Compose from left to right.
+const compose = (...fns) => x => fns.reduceRight((g, f) => f(g) ,x)
 
 const ccToArray = ccnum => ccnum.toString().split('').reverse()
 
@@ -22,7 +24,7 @@ const checkSum = sum => sum % 10 //?
 
 const isValid = sum => sum === 0 //?
   
-const luhn = compose(isValid)(checkSum)(sum)(convertCcno)(ccToArray)
+const luhn = num => compose(isValid, checkSum, sum, convertCcno, ccToArray)(num)
 
 // Test
 const ccNos = [79927398713, 5555555555554444, 4012888888881881, 5105105105105100, 4916737743057301, 5235848633343692, 6011812456115007]
