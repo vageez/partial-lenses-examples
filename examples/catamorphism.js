@@ -15,15 +15,11 @@ const dog = {
 
 const isValidBreed = breed => DogBreed.is(breed) ? Ok(breed) : Err()
 
-    // Map expects a Monad. And returns a Monad
-    Ok(dog)
-    .map(dog => dog.breed)  //? Ok(Chihuahua)
-    // Chain expects a Monad, and it unwrapps it. Does not return a Monad 
-    Ok(dog)
-    .chain(dog => dog.breed) //? Chihuahua
+// Map expects a Monad. And returns a Monad
+Ok(dog).map(dog => dog.breed)  //? Ok(Chihuahua)
 
-
-    import { Ok, Err } from 'pratica
+// Chain expects a Monad, and it unwrapps it. Does not return a Monad 
+Ok(dog).chain(dog => dog.breed) //? Chihuahua
 
 const DogBreed = daggy.taggedSum('DogBreed', {
     Doberman : [],
@@ -47,6 +43,6 @@ Ok(dog)
     .map(breed => breed === 'BullDog' ? DogBreed.BullDog : breed)
     .chain(isValidBreed)
     .cata({
-        Ok: breed => console.log(breed.toString()), //?
-        Err: () => DogBreed.Unknown //?
+        Ok: breed => console.log(breed.toString()), //? DogBreed.Chihuahua
+        Err: () => DogBreed.Unknown
     })
