@@ -1,0 +1,292 @@
+import {
+  modifyOp,
+  identity,
+  elems,
+  ifElse,
+  seq,
+  set,
+  transform,
+} from "partial.lenses";
+import { taggedSum } from "daggy";
+
+const Toggle = taggedSum("taggedSum", {
+  On: [],
+  Off: [],
+});
+
+const items = [
+  {
+    by: "daegloe",
+    descendants: 95,
+    id: 20733648,
+    kids: [
+      20733841
+    ],
+    score: 108,
+    time: 1566171357,
+    title: "We Have Ruined Childhood",
+    type: "story",
+    url:
+      "https://www.nytimes.com/2019/08/17/opinion/sunday/childhood-suicide-depression-anxiety.html",
+    num_comments: 23,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "guiambros",
+    descendants: 1,
+    id: 20733923,
+    kids: [20734091],
+    score: 23,
+    time: 1566174877,
+    title: "Algorithms book, by Jeff Erickson",
+    type: "story",
+    url: "http://jeffe.cs.illinois.edu/teaching/algorithms/",
+    num_comments: 1,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "nurpax",
+    descendants: 18,
+    id: 20732867,
+    kids: [20733551, 20733625, 20733392, 20733869, 20733476],
+    score: 145,
+    time: 1566162437,
+    title: "Dirty tricks 6502 programmers use",
+    type: "story",
+    url:
+      "https://nurpax.github.io/posts/2019-08-18-dirty-tricks-6502-programmers-use.html",
+    num_comments: 5,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "ColinWright",
+    descendants: 18,
+    id: 20729115,
+    kids: [
+      20733338,
+      20733555,
+      20729122,
+      20733764,
+      20733695,
+      20733298,
+      20734106,
+      20733567,
+    ],
+    score: 53,
+    time: 1566119303,
+    title:
+      "Ignition: An Informal History of Liquid Rocket Propellants (1972) [pdf]",
+    type: "story",
+    url: "https://library.sciencemadness.org/library/books/ignition.pdf",
+    num_comments: 8,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "judegomila",
+    descendants: 1,
+    id: 20733699,
+    kids: [20734107],
+    score: 20,
+    time: 1566172085,
+    title:
+      "Using the Golden Research Engine to Query the Y Combinator S19 Batch",
+    type: "story",
+    url:
+      "https://golden.com/blog/using-the-golden-research-engine-to-query-the-y-combinator-s19-batch/",
+    num_comments: 1,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "mathgenius",
+    descendants: 46,
+    id: 20731644,
+    kids: [
+      20732278,
+      20733145,
+      20732371,
+      20733808,
+      20732745,
+      20733480,
+      20732523,
+      20733626,
+      20733799,
+      20733430,
+      20732822,
+      20732989,
+      20733334,
+      20732739,
+      20732871,
+      20732683,
+      20732405,
+      20733788,
+      20733023,
+      20733061,
+    ],
+    score: 159,
+    time: 1566150268,
+    title:
+      "Why doesn't mathematics collapse, though humans often make mistakes in proofs?",
+    type: "story",
+    url:
+      "https://mathoverflow.net/questions/338607/why-doesnt-mathematics-collapse-down-even-though-humans-quite-often-make-mista",
+    num_comments: 22,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "kylequest",
+    descendants: 265,
+    id: 20731160,
+    kids: [
+      20733400,
+      20733275,
+      20731593,
+      20732197,
+      20731579,
+      20732186,
+      20732650,
+      20734038,
+      20731892,
+      20733455,
+      20733907,
+      20733604,
+      20731639,
+      20731717,
+      20732862,
+      20731584,
+      20732146,
+      20733470,
+      20731465,
+      20731482,
+    ],
+    score: 286,
+    time: 1566145592,
+    title: "YAML: Probably not so great after all",
+    type: "story",
+    url: "https://arp242.net/yaml-config.html",
+    num_comments: 48,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "optimalsolver",
+    descendants: 122,
+    id: 20730675,
+    kids: [
+      20731247,
+      20731083,
+      20731587,
+      20731139,
+      20731142,
+      20732159,
+      20732456,
+      20731671,
+      20732251,
+      20731037,
+      20731374,
+      20731102,
+      20731046,
+      20731636,
+      20732505,
+      20731061,
+      20732048,
+      20731044,
+      20731269,
+      20731211,
+    ],
+    score: 157,
+    time: 1566141515,
+    title: "Giving up on Julia (2016)",
+    type: "story",
+    url: "https://www.zverovich.net/2016/05/13/giving-up-on-julia.html",
+    num_comments: 28,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "Sujan",
+    descendants: 51,
+    id: 20732338,
+    kids: [
+      20734180,
+      20734168,
+      20733612,
+      20733773,
+      20733068,
+      20733447,
+      20733203,
+      20734022,
+      20733581,
+      20733720,
+      20733701,
+    ],
+    score: 103,
+    time: 1566157193,
+    title: "Open letter from an Android developer to the Google Play team",
+    type: "story",
+    url:
+      "https://medium.com/@tokata/how-google-play-terminated-a-developer-for-no-reason-e4d760e9f472",
+    num_comments: 11,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sun Aug 18 2019",
+  },
+  {
+    by: "hownottowrite",
+    descendants: 8,
+    id: 20726881,
+    kids: [20734067, 20734025, 20733938, 20733855],
+    score: 12,
+    time: 1566081491,
+    title:
+      "Segway-Ninebot unveils scooters that drive themselves to charging stations",
+    type: "story",
+    url:
+      "https://www.reuters.com/article/us-scooters-ninebot/chinas-ninebot-unveils-scooters-that-drive-themselves-to-charging-stations-idUSKCN1V60LJ",
+    num_comments: 4,
+    comments: [],
+    display_comments: Toggle.Off,
+    display_time: "Sat Aug 17 2019",
+  },
+];
+const comments = [{"by":"yesenadam","id":20734091,"kids":[20734189],"parent":20733923,"text":"Same link got 238 comments 7 months ago <a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=18805624\" rel=\"nofollow\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=18805624</a>","time":1566176860,"type":"comment"}]
+
+
+  const addCommentsToStory = id => comments => items =>
+  transform(
+    [
+      elems,
+      ifElse(
+        item => item.id === id, //?
+        seq( 
+            modifyOp(item => 
+                set(
+                "display_comments", 
+                Toggle.On.is(item.display_comments) ? 'Toggle.Off.toString()' : 'Toggle.On.toString()',
+                item,
+                )
+            ),
+            modifyOp(set("comments", comments))
+        ),
+        identity
+      )
+    ],
+    items
+  );
+
+  addCommentsToStory(20733699)(comments)(items) //?
+
+

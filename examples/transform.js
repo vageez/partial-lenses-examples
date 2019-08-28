@@ -26,3 +26,29 @@ L.modify(
     x => -x,
     [1, 2, 3]
 ) //?
+
+
+/**
+ * 
+ * 
+ * Cool transform, with IfElse and SEQ
+ * 
+ */
+
+ const validateCvv = x => "FieldSet.Value";
+
+const onChangeCvv = payload => state =>
+transform(
+  [
+    elems,
+    ifElse(
+      x => x.key === payload.key,
+      seq(
+        modifyOp(set("cvv", payload.value)),
+        modifyOp(set(["validationState", "cvv"], validateCvv(payload.value)))
+      ),
+      identity
+    ),
+  ],
+  state
+);

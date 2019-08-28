@@ -20,13 +20,13 @@ const convertCcno = ccno => ccno.map((c, i) => isEven(i+1) ? calculation(c) : c)
 
 const sum = ccno => ccno.reduce((acc, c) => +acc + +c, 0 )
 
-const checkSum = sum => sum % 10 //?
+const checkSum = sum => sum % 10
 
-const isValid = sum => sum === 0 //?
+const isValid = sum => sum === 0
   
 const luhn = num => compose(isValid, checkSum, sum, convertCcno, ccToArray)(num)
 
 // Test
-const ccNos = [79927398713, 5555555555554444, 4012888888881881, 5105105105105100, 4916737743057301, 5235848633343692, 6011812456115007]
-ccNos.map(luhn).filter(x => !x).length === 0
-//?
+//, 6011350618169794, 6011381929523148, 79927398713, 5555555555554444, 4012888888881881, 5105105105105100, 4916737743057301, 5235848633343692, 6011812456115007
+const ccNos = [6011347054167738, 6011709975603788, 6011101622873362]
+ccNos.map(luhn).filter(x => !x).length === 0 //?
