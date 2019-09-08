@@ -1,4 +1,4 @@
-import * as L from 'partial.lenses'
+import { get }from 'partial.lenses'
 
 import { data } from '../fixture'
 

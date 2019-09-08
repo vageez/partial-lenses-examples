@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <title>GRID / FLEXBOX</title>
+</head>
+<style>
+/* Grid defines a fixed layout */
+#grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three columns, one three times as wide as the others */
+    grid-template-rows: auto auto auto;
+}
+/* Flexbox defines a fluid flor for elements. My opinion better for responsive */
+#flexbox{
+    display: flex;
+    /* flex-direction: row | row-reverse | column | column-reverse; */
+    flex-direction: row;
+    /* flex-wrap: nowrap | wrap | wrap-reverse; */
+    flex-wrap:  wrap;
+    /* justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly; */
+    justify-content: space-between;
+    /* VERTICALLY CENTER ALIGN TEXT */
+    align-items: center;
+}
+
+.f-child1{
+    /* flex: 1; */
+    width:15%;
+    background-color: red;
+}
+.f-child2 {
+    /* flex: 1; */
+    width:15%;
+    background-color: yellow;
+}
+.f-child3 {
+    /* flex: 1; */
+    width:15%;
+    background-color: blue;
+}
+.f-child4 {
+    /* flex: 1; */
+    width:15%;
+    background-color: orange;
+}
+</style>
+<body>
+
+    <div id="grid">
+        <div class="child-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="child-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="child-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+<br/>
+<br/>
+<br/>
+    <div id="flexbox">
+        <div class="f-child1">1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="f-child2">2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="f-child3">3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="f-child4">4 Lorem ipsum dolor sit amet</div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,8 +1,6 @@
-import * as L from 'partial.lenses'
-import { data } from '../fixture'
+import {get, modify, elems } from 'partial.lenses'
+// import { data } from '../fixture'
 
-
-data //?
 /**
  * 
  *  Pick apart data and put it together in a more meaningful structure
@@ -13,7 +11,7 @@ data //?
 /**
  *     We create a data structure that segregates private and public data
  */
-const picker = L.pick({
+const picker = pick({
     private: { email: 'email', tel: 'phone' },
     public: { name: 'name', cell: 'cell', address: { number: ['address', 'number'], street: ['address', 'street'] } }
 })
@@ -21,7 +19,7 @@ const picker = L.pick({
 /**
  *  We apply to a single data set
  */
-L.get(
+get(
     picker,
     data[0]
 ) //?
@@ -29,8 +27,8 @@ L.get(
 /**
  *  We apply to all instances of data
  */
-L.modify(
-    L.elems,
-    L.get(picker),
+modify(
+    elems,
+    get(picker),
     data
 ) //?
