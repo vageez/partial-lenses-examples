@@ -1,5 +1,5 @@
-import {get, modify, elems } from 'partial.lenses'
-// import { data } from '../fixture'
+import {get, modify, elems, pick } from 'partial.lenses'
+import { data } from '../fixture'
 
 /**
  * 
