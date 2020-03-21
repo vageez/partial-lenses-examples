@@ -134,9 +134,9 @@ class BST {
     let left = this.findMinHeight(node.left)
     let right = this.findMinHeight(node.right)
     if (left < right) {
-      return left + 1
+      return left + 1 //?
     } else {
-      return right + 1
+      return right + 1 //?
     }
   }
   findMaxHeight(node = this.root) {
@@ -155,11 +155,15 @@ class BST {
     if (this.root == null) {
       return null
     } else {
-      var result = new Array()
+      var result = []
       function traverseInOrder(node) {
-        node.left && traverseInOrder(node.left)
+        if (node.left !== null) {
+          traverseInOrder(node.left)
+        }
         result.push(node.data)
-        node.right && traverseInOrder(node.right)
+        if (node.right !== null) {
+          traverseInOrder(node.right)
+        }
       }
       traverseInOrder(this.root)
       return result
@@ -172,10 +176,11 @@ class BST {
       var result = new Array()
       function traversePreOrder(node) {
         result.push(node.data)
-        node.left && traversePreOrder(node.left)
-        node.right && traversePreOrder(node.right)
+        node.left && traversePreOrder(node.left) //?
+        node.right && traversePreOrder(node.right) //?
       }
       traversePreOrder(this.root)
+      result //?
       return result
     }
   }
@@ -193,7 +198,6 @@ class BST {
       return result
     }
   }
-
   levelOrder() {
     let result = []
     let Q = []
@@ -216,9 +220,73 @@ class BST {
   }
 }
 
-const bst = new BST([9, 4, 17, 3, 6, 22, 5, 7, 20])
+// Explicitly created Binary Tree
+const bt = {
+  root: {
+    data: 9,
+    left: {
+      data: 4,
+      left: {
+        data: 3,
+        left: null,
+        right: null
+      },
+      right: {
+        data: 6,
+        left: null,
+        right: {
+          data: 7,
+          left: null,
+          right: null
+        }
+      }
+    },
+    right: {
+      data: 17,
+      left: {
+        data: 20,
+        left: null,
+        right: null
+      },
+      right: {
+        data: 22,
+        left: null,
+        right: null
+      }
+    }
+  }
+}
 
-bst //?
+const findMin = t => {
+  let current = t.root
+  while (current.left !== null) {
+    current = current.left
+  }
+  return current.data
+}
+
+const findMax = t => {
+  let current = t.root
+  while (current.right !== null) {
+    current = current.right
+  }
+  return current.data
+}
+
+findMin(bt) //?
+
+const bst = new BST([9, 4, 17, 3, 6, 22, 5, 7, 20])
+bst.inOrder() //?
+bst.preOrder() //?
+
+// ******** BINARY TREE **********
+//                9
+//        4               17
+//   3        6        20    22
+//      5        7
+
+bst.findMax() //?
+
 // console.log(bst.findMinHeight())
 // console.log(bst.findMaxHeight())
 // console.log(bst.isBalanced())
