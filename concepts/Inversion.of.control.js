@@ -19,10 +19,10 @@ class Engine {
 // Engine is built in. Therefore we are always stuck with the same Engine!
 class Car {
   constructor() {
-    this.engine = new Engine().engine
+    const engine = new Engine().engine
     return {
       model: `CORVETTE`,
-      engine: this.engine
+      engine: engine
     }
   }
 }
