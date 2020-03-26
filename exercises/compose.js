@@ -20,4 +20,5 @@ const o = s => s + 'o'
 
 compose(add1, add2, add3, add4)(0) //?
 
-composePipe(h,e,l,l,o)('') //?
+composePipe(h, e, l, l, o)('') //?
+
