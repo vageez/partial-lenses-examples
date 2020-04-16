@@ -1,5 +1,12 @@
 /* Binary Search Tree */
-
+/**
+ * 
+ * Binary tree
+ * 
+ * In Order Traversal
+ * Pre Order Traversal
+ * Post Order Traversal
+ */
 class Node {
   constructor(data, left = null, right = null) {
     this.data = data
@@ -89,7 +96,7 @@ class BST {
     return false
   }
   remove(data) {
-    const removeNode = function(node, data) {
+    const removeNode = function (node, data) {
       if (node == null) {
         return null
       }
@@ -151,53 +158,6 @@ class BST {
       return right + 1
     }
   }
-  inOrder() {
-    if (this.root == null) {
-      return null
-    } else {
-      var result = []
-      function traverseInOrder(node) {
-        if (node.left !== null) {
-          traverseInOrder(node.left)
-        }
-        result.push(node.data)
-        if (node.right !== null) {
-          traverseInOrder(node.right)
-        }
-      }
-      traverseInOrder(this.root)
-      return result
-    }
-  }
-  preOrder() {
-    if (this.root == null) {
-      return null
-    } else {
-      var result = new Array()
-      function traversePreOrder(node) {
-        result.push(node.data)
-        node.left && traversePreOrder(node.left) //?
-        node.right && traversePreOrder(node.right) //?
-      }
-      traversePreOrder(this.root)
-      result //?
-      return result
-    }
-  }
-  postOrder() {
-    if (this.root == null) {
-      return null
-    } else {
-      var result = new Array()
-      function traversePostOrder(node) {
-        node.left && traversePostOrder(node.left)
-        node.right && traversePostOrder(node.right)
-        result.push(node.data)
-      }
-      traversePostOrder(this.root)
-      return result
-    }
-  }
   levelOrder() {
     let result = []
     let Q = []
@@ -220,43 +180,6 @@ class BST {
   }
 }
 
-// Explicitly created Binary Tree
-const bt = {
-  root: {
-    data: 9,
-    left: {
-      data: 4,
-      left: {
-        data: 3,
-        left: null,
-        right: null
-      },
-      right: {
-        data: 6,
-        left: null,
-        right: {
-          data: 7,
-          left: null,
-          right: null
-        }
-      }
-    },
-    right: {
-      data: 17,
-      left: {
-        data: 20,
-        left: null,
-        right: null
-      },
-      right: {
-        data: 22,
-        left: null,
-        right: null
-      }
-    }
-  }
-}
-
 const findMin = t => {
   let current = t.root
   while (current.left !== null) {
@@ -273,28 +196,92 @@ const findMax = t => {
   return current.data
 }
 
-findMin(bt) //?
+const inOrder = (n) => {
+  if (n.root == null)
+    return
+  else {
+    const traverseNode = (n, res = []) => {
+      // Check Left
+      if (n.left) {
+        traverseNode(n.left, res)
+      }
+      // If node has no LEFT, we push it to the result
+      res.push(n.data)
+
+      // Since no LEFT was found we try continue with the RIGHT NODE
+      if (n.right) {
+        traverseNode(n.right, res)
+      }
+      // If no LEFT and NO RIGHT are found we are DONE
+      return res //?
+    }
+
+    return traverseNode(n.root, [])
+  }
+}
+
+const preOrder = n => {
+  if (n.root === null) {
+    return null
+  } else {
+    const traversePreOrder = (n, r = []) => {
+      r.push(n.data)
+      if (n.left) {
+        traversePreOrder(n.left, r)
+      }
+      if (n.right) {
+        traversePreOrder(n.right, r)
+      }
+      return r
+    }
+    return traversePreOrder(n.root)
+  }
+}
+
+
+// Starts from the left most outer node
+const postOrder = n => {
+  if (n.root == null) {
+    return null
+  }
+  const traversePostOrder = (n, r = []) => {
+    if (n.left) {
+      traversePostOrder(n.left, r)
+    }
+    if (n.right) {
+      traversePostOrder(n.right, r)
+    }
+    r.push(n.data)
+    return r
+  }
+
+  return traversePostOrder(n.root)
+}
+
+const find = (n, data) => {
+  let current = n.root
+  while (current.data !== data) {
+    if (data < current.data) {
+      current = current.left
+    } else {
+      current = current.right
+    }
+    if (current === null) {
+      return null
+    }
+  }
+  return current.data
+}
+
 
 const bst = new BST([9, 4, 17, 3, 6, 22, 5, 7, 20])
-bst.inOrder() //?
-bst.preOrder() //?
 
 // ******** BINARY TREE **********
 //                9
+//            /        \
 //        4               17
+//      /   \           /    \
 //   3        6        20    22
+//    \         \
 //      5        7
 
-bst.findMax() //?
-
-// console.log(bst.findMinHeight())
-// console.log(bst.findMaxHeight())
-// console.log(bst.isBalanced())
-// bst.add(10)
-// console.log(bst.findMinHeight())
-// console.log(bst.findMaxHeight())
-// console.log(bst.isBalanced())
-// console.log('inOrder: ' + bst.inOrder())
-// console.log('preOrder: ' + bst.preOrder())
-// console.log('postOrder: ' + bst.postOrder())
-// console.log('levelOrder: ' + bst.levelOrder())
