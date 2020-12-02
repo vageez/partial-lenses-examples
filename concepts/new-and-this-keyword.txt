@@ -1,0 +1,33 @@
+When calling a function with NEW KEYWORD
+These 4 things happen!
+1. Brand new object created
+2. New object gets linked to a different object!
+3. New object gets bound to this keyword
+4. Implicitly returns this.
+
+
+THIS KEYWORD Determination (FIND THE CALL SITE, and look at those 4 rules.)
+1. WAS THE FUNCTION CALLED WITH THE NEW KEYWORD
+2. WAS THE FUNCTIONCALLED WITH CALL or APPLY, spcifying an explicit this?
+3. Was the function called via a containing/owning object context?
+4. DEFAULT. Global object, except strict mode. (strict mode, undefined)
+
+
+A constructor makes an Object, Linked to its own prototype.
+
+What is a constructor?
+A constructor is a call that has the NEW property in front of it
+
+What is [[Prototype]] and where does it come from?
+It is a linkage from one Object to another Object
+Can come from Object Create, or New Foo() (new step 2)
+
+How does [[Prototype]] mechanism affect how we deal with the Object?
+When calling a prototype reference it delegates the call up the chain until it finds a reference.
+This is a powerfull, fall back
+
+How do we find out where a prototype is linked too (3 ways) ?
+__proto__ (Dunder Prototype)
+Object.getPrototypeOf()
+.constructor.prototype
+
